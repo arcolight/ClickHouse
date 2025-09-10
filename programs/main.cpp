@@ -83,6 +83,8 @@ int mainEntryClickHouseStaticFilesDiskUploader(int argc, char ** argv);
 int mainEntryClickHouseZooKeeperDumpTree(int argc, char ** argv);
 int mainEntryClickHouseZooKeeperRemoveByList(int argc, char ** argv);
 
+int mainEntryClickHousePoC(int argc, char ** argv);
+
 int mainEntryClickHouseHashBinary(int, char **)
 {
     /// Intentionally without newline. So you can run:
@@ -134,6 +136,7 @@ using MainFunc = int (*)(int, char**);
 /// Currently we will prefer the latter option.
 std::pair<std::string_view, MainFunc> clickhouse_applications[] =
 {
+    {"poc", mainEntryClickHousePoC},
     {"local", mainEntryClickHouseLocal},
     {"client", mainEntryClickHouseClient},
 #if USE_CHDIG
